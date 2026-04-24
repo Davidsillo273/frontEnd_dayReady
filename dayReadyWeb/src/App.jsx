@@ -22,12 +22,12 @@ function App() {
     <Router>
       <Routes>
         {/* RUTAS DE CLIENTE-AUTH */}
-        <Route path="/login" element={<LoginCustomer />} />
+        <Route path="/" element={<LoginCustomer />} />
         <Route path="/customer/register" element={<RegisterCustomer />} />
         <Route path="/customer/recovery" element={<RecoveryPassCustomer />} />
 
         {/* RUTAS DE CLIENTE */}
-        <Route path="/" element={<Storefront />} />
+        <Route path="/storefront" element={<Storefront />} />
 
         {/* RUTAS DE ADMIN */}
         <Route path="/admin" element={<LoginAdmin />} />

@@ -27,10 +27,11 @@ export default function LoginCustomer() {
 
         setLoading(true);
         try {
-            // Simulamos una llamada a la API
+
             await new Promise((resolve) => setTimeout(resolve, 2000));
             console.log('Login attempt:', { email, password });
-            // Aquí irá la lógica de autenticación
+
+            navigate('/storefront');
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
         } finally {
@@ -92,6 +93,8 @@ export default function LoginCustomer() {
                         error={errors.password}
                         required
                     />
+
+                    <form onSubmit={handleSubmit}></form>
 
                     {/* Botón Ingresar */}
                     <Button
