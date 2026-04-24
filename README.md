@@ -1,14 +1,14 @@
 DayReady - ¡Energía para comerte el mundo!
 DayReady es una plataforma digital diseñada para revolucionar la forma en que los estudiantes consumen alimentos en el instituto. El sistema permite apartar comida con antelación, eliminando las filas durante los recesos y fomentando el uso responsable del dinero digital.
 
-#Propósito del Proyecto
-##Optimización del Tiempo: Reduce drásticamente las esperas en filas durante los tiempos de descanso.
+Propósito del Proyecto
+Optimización del Tiempo: Reduce drásticamente las esperas en filas durante los tiempos de descanso.
 
 Transformación Digital: Incentiva a los estudiantes a manejar su saldo de forma electrónica a través de la DayWallet.
 
 Eficiencia Operativa: Permite al personal de cafetería preparar pedidos con anticipación, mejorando el flujo de servicio.
 
-#Características Principales
+Características Principales
 Apartado de Comida: Navega por el Storefront, selecciona tu menú y apártalo antes de que suene el timbre.
 
 DayWallet: Sistema de saldo digital integrado para pagos rápidos y seguros.
