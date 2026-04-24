@@ -1,71 +1,48 @@
-DayReady - ¡Energía para comerte el mundo!
-DayReady es una plataforma digital diseñada para revolucionar la forma en que los estudiantes consumen alimentos en el instituto. El sistema permite apartar comida con antelación, eliminando las filas durante los recesos y fomentando el uso responsable del dinero digital.
+DayReady - Sistema de Pedidos Anticipados
+DayReady es una plataforma digital diseñada para modernizar el consumo de alimentos dentro del instituto. El sistema permite a los estudiantes apartar su comida con antelación, eliminando las esperas en filas y fomentando una cultura de manejo de dinero digital a través de una billetera electrónica integrada.
 
-Propósito del Proyecto
-Optimización del Tiempo: Reduce drásticamente las esperas en filas durante los tiempos de descanso.
+Proposito del Proyecto
+Optimizacion del tiempo: Reduccion drastica de las filas en la cafeteria durante los periodos de receso.
 
-Transformación Digital: Incentiva a los estudiantes a manejar su saldo de forma electrónica a través de la DayWallet.
+Inclusion financiera digital: Familiarizar a los estudiantes con el uso de saldos digitales y presupuestos mediante la DayWallet.
 
-Eficiencia Operativa: Permite al personal de cafetería preparar pedidos con anticipación, mejorando el flujo de servicio.
+Eficiencia operativa: Facilitar al personal de cocina la preparacion anticipada de pedidos basada en la demanda real.
 
-Características Principales
-Apartado de Comida: Navega por el Storefront, selecciona tu menú y apártalo antes de que suene el timbre.
+Caracteristicas Tecnicas
+Storefront Inteligente: Catalogo de productos donde los estudiantes pueden reservar sus alimentos.
 
-DayWallet: Sistema de saldo digital integrado para pagos rápidos y seguros.
+DayWallet: Visualizacion y gestion de saldo disponible para compras instantaneas.
 
-Perfil Multitarea: Interfaz centralizada para gestionar:
+Gestion de Usuario: Interfaz centralizada para modificar informacion personal, consultar el historial de pedidos y gestionar metodos de pago.
 
-Información Personal: Gestión de identidad y seguridad.
+Interfaz de Alto Rendimiento: Navegacion interna optimizada para dispositivos moviles y escritorio, evitando recargas innecesarias del navegador.
 
-Historial de Pedidos: Seguimiento de órdenes activas y pasadas.
+Tecnologias Utilizadas
+React.js: Biblioteca principal para la construccion de la interfaz.
 
-Gestión de Pagos: Configuración de tarjetas con sistema de apodos.
+React Router DOM: Gestion de rutas y navegacion del sistema.
 
-Experiencia Premium: Diseño minimalista, sobrio y profesional que facilita la navegación rápida.
+Tailwind CSS: Framework de estilos para un diseño moderno y responsivo.
 
-Stack Tecnológico
-Core: React.js (Hooks, Context, Navigation).
+JavaScript ES6+: Logica de programacion moderna.
 
-Navegación: React Router DOM (v6+).
+Dependencias Principales
+El proyecto requiere las siguientes librerias instaladas:
 
-Estilos: Tailwind CSS (Arquitectura Utility-First).
+react-router-dom
 
-Iconografía: SVG personalizados para una interfaz limpia y ligera.
+tailwindcss
 
-Dependencias Instaladas
-Instalaciones necesarias para el funcionamiento del entorno:
+lucide-react (opcional para iconos)
 
-Bash
-# Rutas y navegación entre pantallas
-npm install react-router-dom
+Configuracion e Instalacion
+Clonar el repositorio.
 
-# Framework de diseño y utilidades CSS
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+Instalar las dependencias con el comando: npm install
 
-# Utilidades de animación (opcional para transiciones de modales)
-npm install tailwindcss-animate
+Iniciar el proyecto en modo desarrollo: npm start
+
+Para generar la version de produccion: npm run build
 
 Detalles del Sistema
-Arquitectura de Componentes
-Storefront: Vista principal donde el estudiante aparta sus alimentos.
-
-ProfileContainer: Un contenedor de estado único que gestiona cinco interfaces distintas (Información, Pedidos, Tarjetas, Notificaciones, Ayuda) mediante navegación interna para evitar sobrecargar el DOM con múltiples modales.
-
-Navigation Logic: Implementación de useNavigate para transiciones seguras entre el login y la tienda.
-
-Instalación y Uso
-Clona el repositorio:
-
-Bash
-git clone https://github.com/tu-usuario/dayready.git
-Instala las dependencias:
-
-Bash
-npm install
-Inicia el servidor local:
-
-Bash
-npm start
-
-DayReady: Tu comida lista, tu tiempo a salvo.
+El sistema implementa una arquitectura de componentes modulares. El perfil de usuario funciona como un contenedor de estados que permite cambiar entre diferentes secciones (Mis Pedidos, Tarjetas, Ayuda) de manera fluida sin cerrar la ventana principal, mejorando la experiencia de usuario.
