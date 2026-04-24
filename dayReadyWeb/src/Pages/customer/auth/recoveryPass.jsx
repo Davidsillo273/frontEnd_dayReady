@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputField from '../../components/InputField';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import backgroundImage from '../../imgs/backGroundLogin.png';
+import InputField from '../../../components/InputField';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import backgroundImage from '../../../imgs/backGroundLogin.png';
 
 export default function RecoveryPass() {
   const navigate = useNavigate();

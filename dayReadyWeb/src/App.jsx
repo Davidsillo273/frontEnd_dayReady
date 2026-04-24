@@ -9,9 +9,10 @@ import Sales from './Pages/admin/sales';
 import Clients from './Pages/admin/clients';
 import RegisterUser from './Pages/admin/registerUser';
 import RecoveryPass from './Pages/admin/recoveryPass';
-import LoginCustomer from './Pages/customer/loginCustomer';
-import RecoveryPassCustomer from './Pages/customer/recoveryPass';
-import RegisterCustomer from './Pages/customer/registerCustomer';
+import LoginCustomer from './Pages/customer/auth/loginCustomer';
+import RecoveryPassCustomer from './Pages/customer/auth/recoveryPass';
+import RegisterCustomer from './Pages/customer/auth/registerCustomer';
+import Storefront from './Pages/customer/storeFront';
 
 function App() {
 
@@ -20,10 +21,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* RUTAS DE CLIENTE */}
-        <Route path="/" element={<LoginCustomer />} />
+        {/* RUTAS DE CLIENTE-AUTH */}
+        <Route path="/login" element={<LoginCustomer />} />
         <Route path="/customer/register" element={<RegisterCustomer />} />
         <Route path="/customer/recovery" element={<RecoveryPassCustomer />} />
+
+        {/* RUTAS DE CLIENTE */}
+        <Route path="/" element={<Storefront />} />
 
         {/* RUTAS DE ADMIN */}
         <Route path="/admin" element={<LoginAdmin />} />
