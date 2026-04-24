@@ -8,6 +8,7 @@ export default function InputField({
   onChange,
   required = false,
   error = null,
+  name = '',
 }) {
   return (
     <div className="mb-4">
@@ -22,6 +23,7 @@ export default function InputField({
         value={value}
         onChange={onChange}
         required={required}
+        name={name}
         className={`w-full px-3 py-2 text-sm rounded-lg border-2 focus:outline-none focus:ring-2 transition ${
           error
             ? 'border-red-500 focus:border-red-600 focus:ring-red-200'

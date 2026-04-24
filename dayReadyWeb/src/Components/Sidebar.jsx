@@ -8,6 +8,8 @@ import {
   Users,
   Settings,
   LogOut,
+  Menu as MenuIcon,
+  BarChart3,
 } from 'lucide-react';
 import dayReadyLogo from '../imgs/DayReadyLogo.png';
 
@@ -15,13 +17,19 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
   const navigate = useNavigate();
 
   const menuItems = [
-    { id: 'inicio', label: 'Inicio', icon: Home },
-    { id: 'inventario', label: 'Inventario', icon: Package },
-    { id: 'pedidos', label: 'Gestión de Pedidos', icon: ShoppingCart },
-    { id: 'ventas', label: 'Ventas', icon: TrendingUp },
-    { id: 'clientes', label: 'Clientes', icon: Users },
-    { id: 'configuracion', label: 'Configuración', icon: Settings },
+    { id: 'inicio', label: 'Inicio', icon: Home, path: '/admin/dashboard' },
+    { id: 'menu', label: 'Menú del Día', icon: MenuIcon, path: '/admin/menu' },
+    { id: 'productos', label: 'Gestión de Productos', icon: Package, path: '/admin/products' },
+    { id: 'pedidos', label: 'Gestión de Pedidos', icon: ShoppingCart, path: '/admin/orders' },
+    { id: 'ventas', label: 'Ventas', icon: BarChart3, path: '/admin/sales' },
+    { id: 'clientes', label: 'Clientes', icon: Users, path: '/admin/customers' },
+    { id: 'configuracion', label: 'Configuración', icon: Settings, path: '/admin/settings' },
   ];
+
+  const handleMenuClick = (item) => {
+    setActiveMenu(item.id);
+    navigate(item.path);
+  };
 
   const handleLogout = () => {
     navigate('/admin');
@@ -47,7 +55,7 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
           return (
             <button
               key={item.id}
-              onClick={() => setActiveMenu(item.id)}
+              onClick={() => handleMenuClick(item)}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                 isActive
                   ? 'bg-orange-100 text-orange-600 border-l-4 border-orange-600'
