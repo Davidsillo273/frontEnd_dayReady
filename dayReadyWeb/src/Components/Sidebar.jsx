@@ -23,7 +23,6 @@ export default function Sidebar({ activeMenu, setActiveMenu }) {
     { id: 'pedidos', label: 'Gestión de Pedidos', icon: ShoppingCart, path: '/admin/orders' },
     { id: 'ventas', label: 'Ventas', icon: BarChart3, path: '/admin/sales' },
     { id: 'clientes', label: 'Clientes', icon: Users, path: '/admin/customers' },
-    { id: 'configuracion', label: 'Configuración', icon: Settings, path: '/admin/settings' },
   ];
 
   const handleMenuClick = (item) => {
