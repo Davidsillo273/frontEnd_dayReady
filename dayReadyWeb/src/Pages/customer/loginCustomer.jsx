@@ -63,7 +63,7 @@ export default function LoginCustomer() {
 
                     {/* Bienvenida */}
                     <div className="text-center mb-6">
-                        <h1 className="text-gray-800 text-2xl font-bold">Bienvenido, Cliente</h1>
+                        <h1 className="text-gray-800 text-2xl font-bold">Bienvenido, cliente</h1>
                         <p className="text-gray-600 text-sm mt-2">Inicia sesión para continuar</p>
                     </div>
 
