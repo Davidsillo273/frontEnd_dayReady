@@ -7,6 +7,17 @@ import dayReadyLogo from '../../imgs/DayReadyLogo.png';
 import backgroundImage from '../../imgs/backGroundLogin.png';
 
 export default function RegisterUser() {
+
+  // Para cuando esté la API
+  // const registerCustomer = async (datos) => {
+  //   const response = await fetch('https://tu-api.com/registro', {
+  //     method: 'POST',
+  //     body: JSON.stringify(datos),
+  //     headers: { 'Content-Type': 'application/json' }
+  //   });
+  //   return response.json();
+  // };
+
   const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
@@ -96,6 +107,24 @@ export default function RegisterUser() {
   };
 
   // --- PASO 4: Aceptar Términos y Registro Final ---
+  // const handleFinalRegistration = async (e) => {
+  //   e.preventDefault();
+  //   if (!formData.terms) {
+  //     setErrors({ terms: 'Debes aceptar los términos' });
+  //     return;
+  //   }
+
+  //   setLoading(true);
+  //   try {
+  //     await registerCustomer(formData);
+  //     navigate('/');
+  //   } catch (error) {
+  //     console.error('Error al registrar usuario:', error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleFinalRegistration = async (e) => {
     e.preventDefault();
     if (!formData.terms) {
@@ -105,11 +134,13 @@ export default function RegisterUser() {
 
     setLoading(true);
     try {
-      // AQUÍ es donde llamas a tu API de verdad
-      await registrarUsuarioEnServidor(formData);
-      navigate('/login'); // O a donde quieras mandarlo
+      // Simulamos que el servidor responde con éxito en 1.5 segundos
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      console.log("Datos enviados:", formData);
+      navigate('/'); // Ahora sí te mandará al Login
     } catch (error) {
-      // manejar error
+      console.error(error);
     } finally {
       setLoading(false);
     }
