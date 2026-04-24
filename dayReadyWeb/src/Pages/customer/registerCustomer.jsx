@@ -8,18 +8,19 @@ import backgroundImage from '../../imgs/backGroundLogin.png';
 
 export default function RegisterUser() {
   const navigate = useNavigate();
-  
+
   const [step, setStep] = useState(1);
-  const [verificationCode, setVerificationCode] = useState(''); 
-  
+  const [verificationCode, setVerificationCode] = useState('');
+
   const [formData, setFormData] = useState({
     names: '',
     lastNames: '',
     email: '',
     password: '',
     phone: '',
+    terms: false,
   });
-  
+
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -39,10 +40,10 @@ export default function RegisterUser() {
 
     setLoading(true);
     try {
-    
+
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log('Código enviado a:', formData.email);
-      setStep(2); 
+      setStep(2);
     } catch (error) {
       console.error('Error al enviar código:', error);
     } finally {
@@ -71,9 +72,9 @@ export default function RegisterUser() {
   };
 
   // --- PASO 3: Registro final ---
-  const handleFinalSubmit = async (e) => {
+  const handleInsertData = async (e) => {
     e.preventDefault();
-    
+
     // Validación final
     const newErrors = {};
     if (!formData.names.trim()) newErrors.names = 'Requerido';
@@ -81,19 +82,34 @@ export default function RegisterUser() {
     if (!formData.password) newErrors.password = 'Requerida';
     if (formData.password.length < 6) newErrors.password = 'Mínimo 6 caracteres';
     if (!formData.phone.trim()) newErrors.phone = 'Requerido';
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
     setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setStep(4);
+    }, 500);
+  };
+
+  // --- PASO 4: Aceptar Términos y Registro Final ---
+  const handleFinalRegistration = async (e) => {
+    e.preventDefault();
+    if (!formData.terms) {
+      setErrors({ terms: 'Debes aceptar los términos' });
+      return;
+    }
+
+    setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log('Usuario registrado con éxito:', formData);
-      navigate('/'); 
+      // AQUÍ es donde llamas a tu API de verdad
+      await registrarUsuarioEnServidor(formData);
+      navigate('/login'); // O a donde quieras mandarlo
     } catch (error) {
-      console.error('Error al registrarse:', error);
+      // manejar error
     } finally {
       setLoading(false);
     }
@@ -108,16 +124,17 @@ export default function RegisterUser() {
     >
       <div className="w-full max-w-md px-4">
         <div className="bg-white rounded-2xl shadow-lg p-6 max-w-md mx-auto">
-          
+
           <div className="text-center">
             <img src={dayReadyLogo} alt="Day Ready Logo" className="w-64 h-auto mx-auto object-contain" />
           </div>
-          
+
           <div className="text-center mb-6">
             <p className="text-gray-600 text-sm font-medium">
               {step === 1 && "Ingresa tu correo para comenzar"}
               {step === 2 && "Ingresa tu código para verificar tu cuenta"}
               {step === 3 && "Ingresa tus datos para finalizar el registro"}
+              {step === 4 && "Acepta los términos y condiciones para continuar"}
             </p>
           </div>
 
@@ -183,7 +200,7 @@ export default function RegisterUser() {
 
           {/* ---- INTERFAZ PASO 3 ---- */}
           {step === 3 && (
-            <form onSubmit={handleFinalSubmit}>
+            <form onSubmit={handleInsertData}>
               <InputField
                 label="Nombres"
                 type="text"
@@ -218,20 +235,69 @@ export default function RegisterUser() {
                 label="Contraseña"
                 type="password"
                 name="password"
-                placeholder="••••••••"  
+                placeholder="••••••••"
                 value={formData.password}
                 onChange={handleChange}
                 error={errors.password}
                 required
               />
-              
+
               <button
                 type="submit"
                 disabled={loading}
                 className="w-full mt-4 bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-lg"
               >
-                {loading ? <LoadingSpinner /> : 'Finalizar Registro'}
+                {loading ? <LoadingSpinner /> : 'Siguiente'}
               </button>
+            </form>
+          )}
+
+          {/* ---- INTERFAZ PASO 4: TÉRMINOS Y CONDICIONES ---- */}
+          {step === 4 && (
+            <form onSubmit={handleFinalRegistration}>
+              <div className="mt-4 mb-6">
+                <label className="flex items-start cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="terms"
+                    checked={formData.terms}
+                    onChange={(e) => {
+                      setFormData({ ...formData, terms: e.target.checked });
+                      if (errors.terms) setErrors({ ...errors, terms: null });
+                    }}
+                    className="form-checkbox h-4 w-4 text-green-500 focus:ring-green-400 border-gray-300 rounded mt-1"
+                  />
+                  <span className="ml-2 text-sm text-gray-600">
+                    Acepto los{' '}
+                    <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 underline">
+                      términos y condiciones
+                    </a>
+                  </span>
+                </label>
+
+                {/* Mensaje de error si intentan avanzar sin aceptar */}
+                {errors.terms && (
+                  <p className="text-red-500 text-xs mt-2 ml-6">{errors.terms}</p>
+                )}
+              </div>
+
+              {/* Botones de navegación */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setStep(3)}
+                  className="w-1/3 border border-gray-300 text-gray-600 py-2 rounded-lg hover:bg-gray-50 transition"
+                >
+                  Volver
+                </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-2/3 bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-lg flex items-center justify-center transition disabled:opacity-50"
+                >
+                  {loading ? <LoadingSpinner /> : 'Finalizar registro'}
+                </button>
+              </div>
             </form>
           )}
 
@@ -247,7 +313,6 @@ export default function RegisterUser() {
               </button>
             </div>
           )}
-
         </div>
       </div>
     </div>
