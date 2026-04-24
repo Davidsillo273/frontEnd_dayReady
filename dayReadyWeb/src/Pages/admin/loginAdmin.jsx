@@ -29,7 +29,8 @@ export default function LoginAdmin() {
       // Simulamos una llamada a la API
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log('Login attempt:', { email, password });
-      // Aquí irá la lógica de autenticación
+      // Navegamos al dashboard después de autenticación exitosa
+      navigate('/admin/dashboard');
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
     } finally {
