@@ -4,6 +4,7 @@ import LoginAdmin from './Pages/admin/loginAdmin';
 import Dashboard from './Pages/admin/dashboard';
 import Menu from './Pages/admin/menu';
 import Products from './Pages/admin/products';
+import Orders from './Pages/admin/orders';
 import RegisterUser from './Pages/admin/registerUser';
 import RecoveryPass from './Pages/admin/recoveryPass';
 import LoginCustomer from './Pages/customer/loginCustomer';
@@ -27,6 +28,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/menu" element={<Menu />} />
         <Route path="/admin/products" element={<Products />} />
+        <Route path="/admin/orders" element={<Orders />} />
         <Route path="/admin/register" element={<RegisterUser />} />
         <Route path="/admin/recovery" element={<RecoveryPass />} />
 
