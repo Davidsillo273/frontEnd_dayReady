@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "dayReadyMobile",
+    "slug": "dayReadyMobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "dayready",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dayready.mobile"
+    },
+    "android": {
+      "package": "com.dayready.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#F4A261",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#F4A261"
+        }
+      ],
+      "expo-font"
+    ]
+  }
+}
